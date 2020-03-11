@@ -1,0 +1,9 @@
+.brand {
+    margin: 20px;
+    display: flex;
+}
+
+.name {
+    font-size: 2rem;
+    margin: auto 10px;
+}
