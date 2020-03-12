@@ -18,13 +18,17 @@ function Add() {
       answerThree: answerThree
     };
 
-    const response = await fetch(process.env.REACT_APP_POLLS_API, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(poll)
-    });
+    const response = await fetch(
+      process.env.REACT_APP_POLLS_API ||
+        "https://my-json-server.typicode.com/phlgr/trivia/polls",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(poll)
+      }
+    );
     const createdNewPoll = await response.json();
 
     alert(`New poll is created with the id ${createdNewPoll.id}`);
