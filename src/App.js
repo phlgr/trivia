@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import "./App.css";
 import Header from "./components/Header/Header";
@@ -15,7 +15,11 @@ export default function App() {
           <Header />
           <Switch>
             <Route exact path="/">
-              Hello
+              <div className="container">
+                <Link className="btn-primary" to="/add">
+                  New Poll
+                </Link>
+              </div>
             </Route>
 
             <Route path="/add">
