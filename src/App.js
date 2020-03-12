@@ -1,11 +1,12 @@
-import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import React from 'react';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
-import "./App.css";
-import Header from "./components/Header/Header";
-import Add from "./pages/Add";
-import Vote from "./pages/Vote";
-import Result from "./pages/Result";
+import './App.css';
+import Header from './components/Header/Header';
+import Add from './pages/Add';
+import Vote from './pages/Vote';
+import Result from './pages/Result';
+import Button from './components/Button';
 
 export default function App() {
   return (
@@ -16,8 +17,8 @@ export default function App() {
           <Switch>
             <Route exact path="/">
               <div className="container">
-                <Link className="btn-primary" to="/add">
-                  New Poll
+                <Link to="/add">
+                  <Button>New Poll</Button>
                 </Link>
               </div>
             </Route>

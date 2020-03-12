@@ -1,25 +1,59 @@
-import React from "react";
-import "./Add.css";
-import { Link } from "react-router-dom";
+import React from 'react';
+import './Add.css';
+import Button from '../components/Button';
+import { Link } from 'react-router-dom';
 
 function Add() {
+  const [question, setQuestion] = React.useState('');
+  const [answerOne, setAnswerOne] = React.useState('');
+  const [answerTwo, setAnswerTwo] = React.useState('');
+  const [answerThree, setAnswerThree] = React.useState('');
+  console.log(
+    `Frage: ${question}, A1: ${answerOne}, A2: ${answerTwo}, A3: ${answerThree}`
+  );
+
   return (
-    <div className="container">
+    <form className="container">
       <div className="questionContainer">
         <input
           className="questionInput"
           placeholder="Enter your question..."
-        ></input>
+          value={question}
+          onChange={event => {
+            setQuestion(event.target.value);
+          }}
+        />
       </div>
       <div className="answerContainer">
-        <input className="answerInput" placeholder="Answer 1"></input>
-        <input className="answerInput" placeholder="Answer 2"></input>
-        <input className="answerInput" placeholder="Answer 3"></input>
+        <input
+          className="answerInput"
+          placeholder="Answer 1"
+          value={answerOne}
+          onChange={event => {
+            setAnswerOne(event.target.value);
+          }}
+        />
+        <input
+          className="answerInput"
+          placeholder="Answer 2"
+          value={answerTwo}
+          onChange={event => {
+            setAnswerTwo(event.target.value);
+          }}
+        />
+        <input
+          className="answerInput"
+          placeholder="Answer 3"
+          value={answerThree}
+          onChange={event => {
+            setAnswerThree(event.target.value);
+          }}
+        />
       </div>
-      <Link to="/vote" type="submit" className="btn-primary">
-        Submit!
+      <Link to="/vote">
+        <Button type="submit">Submit!</Button>
       </Link>
-    </div>
+    </form>
   );
 }
 
