@@ -7,10 +7,3 @@
   font-size: 1.8rem;
   text-decoration: none;
 }
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 70vh;
-}
