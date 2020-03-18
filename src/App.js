@@ -45,7 +45,7 @@ export default function App() {
               <Add />
             </Route>
 
-            <Route path="/vote">
+            <Route path="/polls/:pollId/vote">
               <Vote />
             </Route>
 
