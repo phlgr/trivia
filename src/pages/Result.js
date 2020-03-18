@@ -2,7 +2,9 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import Container from "../components/Container";
 
-const POLLS_API_URL = "http://localhost:4000/polls";
+const POLLS_API_URL =
+  process.env.REACT_APP_POLLS_API ||
+  "https://my-json-server.typicode.com/phlgr/trivia/polls";
 
 function Result() {
   const { pollId } = useParams();
