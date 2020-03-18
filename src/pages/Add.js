@@ -63,7 +63,8 @@ function Add() {
       question: question,
       answerOne: answerOne,
       answerTwo: answerTwo,
-      answerThree: answerThree
+      answerThree: answerThree,
+      votes: []
     };
 
     const response = await fetch(

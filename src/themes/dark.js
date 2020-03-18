@@ -1,3 +1,3 @@
 export const dark = {
-  background: "black"
+  background: "#1A2040"
 };
