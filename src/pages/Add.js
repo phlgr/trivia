@@ -1,6 +1,55 @@
 import React from "react";
-import "./Add.css";
 import Button from "../components/Button";
+
+import styled from "@emotion/styled";
+
+const FormContainer = styled.form`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+`;
+
+const QuestionContainer = styled.div`
+  width: 100vw;
+`;
+
+const QuestionInput = styled.input`
+  background: none;
+  border: none;
+  border-bottom: 3px solid #04d976;
+  outline: none;
+  font-size: 2rem;
+  color: #f2f2f2;
+  width: 80%;
+  margin: 0px 20px;
+  &::placeholder {
+    color: #f2f2f2;
+  }
+`;
+
+const AnswerContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  width: 100vw;
+  margin: 40px 0 60px;
+`;
+
+const AnswerInput = styled.input`
+  width: 60%;
+  border: none;
+  background: none;
+  font-size: 1.4rem;
+  color: #f2f2f2;
+  outline: none;
+  border-bottom: 2px solid #04d976;
+  margin: 5px 20px;
+  &::placeholder {
+    color: #f2f2f2;
+  }
+`;
 
 function Add() {
   const [question, setQuestion] = React.useState("");
@@ -33,45 +82,41 @@ function Add() {
     alert(`New poll is created with the id ${createdNewPoll.id}`);
   }
   return (
-    <form className="container" onSubmit={handleSubmit}>
-      <div className="questionContainer">
-        <input
-          className="questionInput"
+    <FormContainer onSubmit={handleSubmit}>
+      <QuestionContainer>
+        <QuestionInput
           placeholder="Enter your question..."
           value={question}
           onChange={event => {
             setQuestion(event.target.value);
           }}
         />
-      </div>
-      <div className="answerContainer">
-        <input
-          className="answerInput"
+      </QuestionContainer>
+      <AnswerContainer>
+        <AnswerInput
           placeholder="Answer 1"
           value={answerOne}
           onChange={event => {
             setAnswerOne(event.target.value);
           }}
         />
-        <input
-          className="answerInput"
+        <AnswerInput
           placeholder="Answer 2"
           value={answerTwo}
           onChange={event => {
             setAnswerTwo(event.target.value);
           }}
         />
-        <input
-          className="answerInput"
+        <AnswerInput
           placeholder="Answer 3"
           value={answerThree}
           onChange={event => {
             setAnswerThree(event.target.value);
           }}
         />
-      </div>
+      </AnswerContainer>
       <Button type="submit">Submit!</Button>
-    </form>
+    </FormContainer>
   );
 }
 
