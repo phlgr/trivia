@@ -1,14 +1,9 @@
 import React from "react";
 import { useParams, useHistory } from "react-router-dom";
-import styled from "@emotion/styled";
 import Button from "../components/Button";
 import Form from "../components/Form";
 import RadioInput from "../components/RadioInput";
 import Container from "../components/Container";
-
-const Label = styled.label`
-  display: block;
-`;
 
 const POLLS_API_URL =
   process.env.REACT_APP_POLLS_API ||

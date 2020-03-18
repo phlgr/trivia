@@ -6,9 +6,7 @@
       "answerOne": "8$",
       "answerTwo": "5 Pounds",
       "answerThree": "99 bucks",
-      "votes": [
-        "answerThree"
-      ]
+      "votes": ["answerThree", "answerTwo"]
     },
     {
       "question": "Was gibt es heute zu Essen?",
