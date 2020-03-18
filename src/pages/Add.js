@@ -1,7 +1,6 @@
 import React from "react";
 import "./Add.css";
 import Button from "../components/Button";
-import { Link } from "react-router-dom";
 
 function Add() {
   const [question, setQuestion] = React.useState("");

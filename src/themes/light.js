@@ -1,3 +1,3 @@
-const light = {
+export const light = {
   background: "white"
 };

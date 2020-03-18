@@ -1,8 +1,9 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
-import { ThemeProvider, withTheme } from "emotion-theming";
-import light from "./themes/light";
+import { ThemeProvider } from "emotion-theming";
+import { light } from "./themes/light";
+import { dark } from "./themes/dark";
 
 import "./App.css";
 import Header from "./components/Header/Header";
@@ -13,12 +14,16 @@ import Button from "./components/Button";
 import GlobalStyles from "./themes/GlobalStyles";
 
 export default function App() {
+  const [theme, setTheme] = React.useState(light);
+
   return (
-    <ThemeProvider theme={light}>
+    <ThemeProvider theme={theme}>
       <GlobalStyles />
       <Router>
         <main>
-          <Header />
+          <Header
+            onSwitchColorButton={() => setTheme(theme === dark ? light : dark)}
+          />
           <Switch>
             <Route exact path="/">
               <div className="container">
