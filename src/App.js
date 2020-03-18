@@ -1,16 +1,21 @@
-import React from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import React from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
-import './App.css';
-import Header from './components/Header/Header';
-import Add from './pages/Add';
-import Vote from './pages/Vote';
-import Result from './pages/Result';
-import Button from './components/Button';
+import { ThemeProvider, withTheme } from "emotion-theming";
+import light from "./themes/light";
+
+import "./App.css";
+import Header from "./components/Header/Header";
+import Add from "./pages/Add";
+import Vote from "./pages/Vote";
+import Result from "./pages/Result";
+import Button from "./components/Button";
+import GlobalStyles from "./themes/GlobalStyles";
 
 export default function App() {
   return (
-    <>
+    <ThemeProvider theme={light}>
+      <GlobalStyles />
       <Router>
         <main>
           <Header />
@@ -37,6 +42,6 @@ export default function App() {
           </Switch>
         </main>
       </Router>
-    </>
+    </ThemeProvider>
   );
 }
