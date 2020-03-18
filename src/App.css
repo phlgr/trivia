@@ -1,12 +1,4 @@
-.btn-primary {
-  background: #04d976;
-  padding: 10px 50px;
-  border: none;
-  border-radius: 30px;
-  color: #f2f2f2;
-  font-size: 1.8rem;
-  text-decoration: none;
-}
+
 .container {
   display: flex;
   flex-direction: column;
