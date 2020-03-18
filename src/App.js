@@ -14,7 +14,7 @@ import Button from "./components/Button";
 import GlobalStyles from "./themes/GlobalStyles";
 
 export default function App() {
-  const [theme, setTheme] = React.useState(light);
+  const [theme, setTheme] = React.useState(dark);
 
   return (
     <ThemeProvider theme={theme}>
@@ -41,7 +41,7 @@ export default function App() {
               <Vote />
             </Route>
 
-            <Route path="/result">
+            <Route path="/polls/:pollId">
               <Result />
             </Route>
           </Switch>
