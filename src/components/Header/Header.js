@@ -1,17 +1,31 @@
 import React from "react";
-import "./Header.css";
 import Logo from "./logo.svg";
 import { Link } from "react-router-dom";
+import styled from "@emotion/styled";
+import Button from "../Button";
 
-function Header() {
+const Brand = styled.div`
+  margin: 20px;
+  display: flex;
+`;
+
+const BrandName = styled.div`
+  font-size: 2rem;
+  margin: auto 10px;
+`;
+
+function Header({ onSwitchColorButton }) {
   return (
     <header>
-      <div className="brand">
+      <Brand>
         <Link to="/">
-          <img className="logo" src={Logo} alt=""></img>
+          <img src={Logo} alt=""></img>
         </Link>
-        <div className="name"> SimplePoll</div>
-      </div>
+        <BrandName> SimplePoll</BrandName>
+      </Brand>
+      <Button onClick={onSwitchColorButton}>
+        <span>🌓</span>
+      </Button>
     </header>
   );
 }
