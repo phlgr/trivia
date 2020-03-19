@@ -1,5 +1,7 @@
 import React from "react";
 import Button from "../components/Button";
+import { postPoll } from "../api/api";
+import { useHistory } from "react-router-dom";
 
 import styled from "@emotion/styled";
 
@@ -52,6 +54,7 @@ const AnswerInput = styled.input`
 `;
 
 function Add() {
+  const history = useHistory();
   const [question, setQuestion] = React.useState("");
   const [answerOne, setAnswerOne] = React.useState("");
   const [answerTwo, setAnswerTwo] = React.useState("");
@@ -67,20 +70,8 @@ function Add() {
       votes: []
     };
 
-    const response = await fetch(
-      process.env.REACT_APP_POLLS_API ||
-        "https://my-json-server.typicode.com/phlgr/trivia/polls",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(poll)
-      }
-    );
-    const createdNewPoll = await response.json();
-
-    alert(`New poll is created with the id ${createdNewPoll.id}`);
+    const createdPoll = await postPoll(poll);
+    history.push(`/polls/${createdPoll.id}/vote`);
   }
   return (
     <FormContainer onSubmit={handleSubmit}>
