@@ -1,6 +1,5 @@
 import React from "react";
 import { useParams, useHistory } from "react-router-dom";
-import styled from "@emotion/styled";
 import Button from "../components/Button";
 import Form from "../components/Form";
 import RadioInput from "../components/RadioInput";
@@ -32,28 +31,22 @@ function Vote() {
     history.push(`/polls/${poll.id}`);
   }
 
+  const options = ["answerOne", "answerTwo", "answerThree"];
+
   return (
     <Container>
       <Form onSubmit={handleSubmit}>
         <h2>{poll?.question}</h2>
-        <RadioInput
-          checked={answer === "answerOne"}
-          value="answerOne"
-          label={poll?.answerOne}
-          onChange={event => setAnswer(event.target.value)}
-        />
-        <RadioInput
-          checked={answer === "answerTwo"}
-          value="answerTwo"
-          label={poll?.answerTwo}
-          onChange={event => setAnswer(event.target.value)}
-        />
-        <RadioInput
-          checked={answer === "answerThree"}
-          value="answerThree"
-          label={poll?.answerThree}
-          onChange={event => setAnswer(event.target.value)}
-        />
+        {options.map(option => (
+          <RadioInput
+            key={option}
+            checked={answer === option}
+            onChange={event => setAnswer(event.target.value)}
+            value={option}
+            label={poll?.[option]}
+            name="answer"
+          />
+        ))}
         <Button>Vote</Button>
       </Form>
     </Container>

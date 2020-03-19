@@ -6,7 +6,7 @@ const MainContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 40vh;
+  height: 60vh;
 `;
 
 export default function Container(props) {

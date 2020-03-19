@@ -59,6 +59,7 @@ function Add() {
   const [answerOne, setAnswerOne] = React.useState("");
   const [answerTwo, setAnswerTwo] = React.useState("");
   const [answerThree, setAnswerThree] = React.useState("");
+  const history = useHistory();
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -69,9 +70,9 @@ function Add() {
       answerThree: answerThree,
       votes: []
     };
-
     const createdPoll = await postPoll(poll);
     history.push(`/polls/${createdPoll.id}/vote`);
+
   }
   return (
     <FormContainer onSubmit={handleSubmit}>
