@@ -15,6 +15,16 @@
       "answerThree": "Nudeln",
       "votes": [],
       "id": 2
+    },
+    {
+      "question": "",
+      "answerOne": "",
+      "answerTwo": "",
+      "answerThree": "",
+      "votes": [
+        null
+      ],
+      "id": 3
     }
   ]
 }

@@ -4,10 +4,7 @@ import Button from "../components/Button";
 import Form from "../components/Form";
 import RadioInput from "../components/RadioInput";
 import Container from "../components/Container";
-
-const POLLS_API_URL =
-  process.env.REACT_APP_POLLS_API ||
-  "https://my-json-server.typicode.com/phlgr/trivia/polls";
+import { patchPoll, getPoll } from "../api/api";
 
 function Vote() {
   const { pollId } = useParams();
@@ -16,13 +13,12 @@ function Vote() {
   const [answer, setAnswer] = React.useState(null);
 
   React.useEffect(() => {
-    async function getPoll() {
-      const response = await fetch(`${POLLS_API_URL}/${pollId}`);
-      const poll = await response.json();
+    async function doGetPoll() {
+      const poll = await getPoll(pollId);
       setPoll(poll);
     }
 
-    getPoll();
+    doGetPoll();
   }, [pollId]);
 
   async function handleSubmit(event) {
@@ -31,13 +27,7 @@ function Vote() {
     const newPoll = { ...poll };
     newPoll.votes.push(answer);
 
-    await fetch(`${POLLS_API_URL}/${pollId}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(newPoll)
-    });
+    await patchPoll(pollId, newPoll);
     history.push(`/polls/${poll.id}`);
   }
 
