@@ -2,6 +2,7 @@ import React from "react";
 import Button from "../components/Button";
 import { postPoll } from "../api/api";
 import { useHistory } from "react-router-dom";
+import LoadingAnimation from "../components/LoadingAnimation";
 
 import styled from "@emotion/styled";
 
@@ -59,9 +60,19 @@ function Add() {
   const [answerOne, setAnswerOne] = React.useState("");
   const [answerTwo, setAnswerTwo] = React.useState("");
   const [answerThree, setAnswerThree] = React.useState("");
+  const [isLoading, setIsLoading] = React.useState(false);
+  const [ButtonContent, setButtonContent] = React.useState(null);
+
+  React.useEffect(() => {
+    const loading = <LoadingAnimation />;
+    const text = "Submit!";
+    const ButtonContent = isLoading ? loading : text;
+    setButtonContent(ButtonContent);
+  }, [isLoading]);
 
   async function handleSubmit(event) {
     event.preventDefault();
+    setIsLoading(true);
     const poll = {
       question: question,
       answerOne: answerOne,
@@ -106,7 +117,9 @@ function Add() {
           }}
         />
       </AnswerContainer>
-      <Button type="submit">Submit!</Button>
+      <Button disabled={isLoading} type="submit">
+        {ButtonContent}
+      </Button>
     </FormContainer>
   );
 }

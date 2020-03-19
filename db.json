@@ -21,10 +21,16 @@
       "answerOne": "",
       "answerTwo": "",
       "answerThree": "",
-      "votes": [
-        null
-      ],
+      "votes": [],
       "id": 3
+    },
+    {
+      "question": "",
+      "answerOne": "",
+      "answerTwo": "",
+      "answerThree": "",
+      "votes": [],
+      "id": 4
     }
   ]
 }

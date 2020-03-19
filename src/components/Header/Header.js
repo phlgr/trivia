@@ -2,7 +2,6 @@ import React from "react";
 import Logo from "./logo.svg";
 import { Link } from "react-router-dom";
 import styled from "@emotion/styled";
-import Button from "../Button";
 
 const Brand = styled.div`
   margin: 20px;
@@ -14,19 +13,38 @@ const BrandName = styled.div`
   margin: auto 10px;
 `;
 
+const HeaderContainer = styled.header`
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+`;
+
+const ThemeToggleSwitch = styled.span`
+  background: #04d976;
+  padding: 10px;
+  border-radius: 10px;
+
+  &:active {
+    background: #04b976;
+    transition: 0.02s;
+  }
+`;
+
 function Header({ onSwitchColorButton }) {
   return (
-    <header>
+    <HeaderContainer>
       <Brand>
         <Link to="/">
           <img src={Logo} alt=""></img>
         </Link>
         <BrandName> SimplePoll</BrandName>
       </Brand>
-      <Button onClick={onSwitchColorButton}>
-        <span>🌓</span>
-      </Button>
-    </header>
+      <ThemeToggleSwitch onClick={onSwitchColorButton}>
+        <span role="img" aria-label="Moon">
+          🌓
+        </span>
+      </ThemeToggleSwitch>
+    </HeaderContainer>
   );
 }
 

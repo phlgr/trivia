@@ -3,19 +3,31 @@ import { useParams } from "react-router-dom";
 import Container from "../components/Container";
 import { getPoll } from "../api/api";
 import PieChart from "react-minimal-pie-chart";
+import LoadingAnimation from "../components/LoadingAnimation";
 
 function Result() {
   const { pollId } = useParams();
   const [poll, setPoll] = React.useState(null);
+  const [isLoading, setIsLoading] = React.useState(true);
 
   React.useEffect(() => {
     async function doGetPoll() {
       const poll = await getPoll(pollId);
+
       setPoll(poll);
+      setIsLoading(false);
     }
 
     doGetPoll();
   }, [pollId]);
+
+  if (isLoading) {
+    return (
+      <Container>
+        <LoadingAnimation />
+      </Container>
+    );
+  }
 
   const answerOneVotes =
     poll?.votes.filter(vote => vote === "answerOne").length || 0;
@@ -23,7 +35,6 @@ function Result() {
     poll?.votes.filter(vote => vote === "answerTwo").length || 0;
   const answerThreeVotes =
     poll?.votes.filter(vote => vote === "answerThree").length || 0;
-
   return (
     <>
       <Container>
