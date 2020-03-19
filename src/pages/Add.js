@@ -1,5 +1,6 @@
 import React from "react";
 import Button from "../components/Button";
+import { useHistory } from "react-router-dom";
 
 import styled from "@emotion/styled";
 
@@ -56,6 +57,7 @@ function Add() {
   const [answerOne, setAnswerOne] = React.useState("");
   const [answerTwo, setAnswerTwo] = React.useState("");
   const [answerThree, setAnswerThree] = React.useState("");
+  const history = useHistory();
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -81,6 +83,7 @@ function Add() {
     const createdNewPoll = await response.json();
 
     alert(`New poll is created with the id ${createdNewPoll.id}`);
+    history.push(`/polls/${createdNewPoll.id}/vote`);
   }
   return (
     <FormContainer onSubmit={handleSubmit}>
